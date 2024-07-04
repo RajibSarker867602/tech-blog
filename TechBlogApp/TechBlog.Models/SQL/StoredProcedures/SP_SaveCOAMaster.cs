@@ -1,0 +1,16 @@
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LeadingEdgeServer.Models.SQL.StoredProcedures
+{
+    [Keyless]
+    public class SP_SaveCOAMaster
+    {
+        public Guid? COAId { get; set; }
+        //public int Err { get; set; }
+    }
+}
