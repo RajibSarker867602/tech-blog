@@ -20,4 +20,8 @@
     <ProjectReference Include="..\TechBlog.Services.Abstraction\TechBlog.Services.Abstraction.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>

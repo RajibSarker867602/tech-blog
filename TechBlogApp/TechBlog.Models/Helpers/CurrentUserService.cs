@@ -1,12 +1,11 @@
 ﻿using LeadingEdgeServer.Models.Common;
-using LeadingEdgeServer.Models.Response.MenuModules;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 using TechBlog.Models.Helpers.Contracts;
 
 namespace TechBlog.Models.Helpers
 {
-    public class CurrentUserServiceData
+    public class CurrentUserService
     {
         private static IHttpContextAccessor _httpContextAccessor;
         private static ICacheService _memoryCache;

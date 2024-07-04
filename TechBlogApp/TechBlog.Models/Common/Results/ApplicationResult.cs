@@ -1,11 +1,4 @@
-﻿using LeadingEdgeServer.Models.Request.Inventory.ItemUnit;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TechBlog.Models.Common.Results;
+﻿namespace TechBlog.Models.Common.Results;
 
 /// <summary>
 /// Set the response with success and error data
@@ -59,6 +52,7 @@ public readonly struct ApplicationResult<TValue, TError>
     public bool IsSuccess => !IsSuccess;
 
     public static implicit operator ApplicationResult<TValue, TError>(TValue value) => new(value);
+
     public static implicit operator ApplicationResult<TValue, TError>(TError error) => new(error);
 
     /// <summary>
@@ -69,7 +63,7 @@ public readonly struct ApplicationResult<TValue, TError>
     /// <param name="error"></param>
     /// <returns>Returns success or failuer based on the error status</returns>
     public TResult Match<TResult>(Func<ApplicationSuccessResponse<TValue>, TResult> onSuccess, Func<TError, TResult> onFailed) =>
-                        !IsError ? onSuccess(new ApplicationSuccessResponse<TValue>() { Data = _value, Message = _message}) : onFailed(_error);
+                        !IsError ? onSuccess(new ApplicationSuccessResponse<TValue>() { Data = _value, Message = _message }) : onFailed(_error);
 
     /// <summary>
     /// Get success result
@@ -84,7 +78,6 @@ public readonly struct ApplicationResult<TValue, TError>
     public TError GetErrors() => _error;
 }
 
-
 /// <summary>
 /// Application success response dto
 /// </summary>
@@ -95,6 +88,7 @@ public class ApplicationSuccessResponse<TValue>
     /// Success value to return
     /// </summary>
     public TValue? Data { get; set; }
+
     /// <summary>
     /// Success message to return
     /// </summary>

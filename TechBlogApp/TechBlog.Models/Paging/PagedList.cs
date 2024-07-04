@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace TechBlog.Models.Paging
 {
@@ -29,12 +30,6 @@ namespace TechBlog.Models.Paging
                 return new PagedList<TEntity>(await source.ToListAsync(), count, pageNumber, pageSize);
             }
             var items = await source.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
-            return new PagedList<TEntity>(items, count, pageNumber, pageSize);
-        }
-        public static PagedList<TEntity> Create(IQueryable<TEntity> source, int pageNumber, int pageSize)
-        {
-            var count = source.Count();
-            var items = source.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
             return new PagedList<TEntity>(items, count, pageNumber, pageSize);
         }
     }

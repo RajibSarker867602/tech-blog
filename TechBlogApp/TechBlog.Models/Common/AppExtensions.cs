@@ -1,5 +1,4 @@
-﻿using LeadingEdgeServer.Models.Middleware;
-using LeadingEdgeServer.Models.Paging;
+﻿using LeadingEdgeServer.Models.Paging;
 using LeadingEdgeServer.Models.Utilities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -8,6 +7,7 @@ using Newtonsoft.Json.Serialization;
 using System.ComponentModel;
 using System.Dynamic;
 using System.Linq.Expressions;
+using TechBlog.Models.Common;
 using TechBlog.Models.Common.Results;
 
 namespace LeadingEdgeServer.Models.Common
@@ -60,7 +60,6 @@ namespace LeadingEdgeServer.Models.Common
         {
             return source ?? default(T);
         }
-
 
         public static string ConvertDateTime(this DateTime datetime)
         {

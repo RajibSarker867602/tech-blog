@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using LeadingEdgeServer.Models.Hubs;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -9,11 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using NLog.Extensions.Logging;
 using System.Text;
-using Microsoft.OpenApi.Models;
-using TechBlog.Models.AutoMapper;
+using TechBlog.Models.Hubs;
 
 namespace TechBlog.Models.Extensions
 {
@@ -237,22 +235,6 @@ namespace TechBlog.Models.Extensions
                 logging.AddEventSourceLogger();
                 logging.AddNLog();
             });
-            return builder;
-        }
-
-        /// <summary>
-        /// Configure application mapping profile
-        /// </summary>
-        /// <param name="builder"></param>
-        /// <returns></returns>
-        public static WebApplicationBuilder AddAppMappingProfile(this WebApplicationBuilder builder)
-        {
-            var mappingConfig = new MapperConfiguration(mc =>
-            {
-                mc.AddProfile(new MappingProfile());
-            });
-            IMapper mapper = mappingConfig.CreateMapper();
-            builder.Services.AddSingleton(mapper);
             return builder;
         }
     }
